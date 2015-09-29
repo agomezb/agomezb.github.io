@@ -26,7 +26,9 @@
       </span>
     </a>
     <div class="tocify-wrapper">
+	<div style="background-color:white;">
       <img src="images/logo.png" />
+	</div>
         <div class="lang-selector">
               <a href="#" data-language-name="json">json</a>
               <a href="#" data-language-name="python">python</a>
@@ -106,13 +108,13 @@
 <tr>
 <td>fecha_apertura</td>
 <td>string</td>
-<td>11</td>
+<td>10</td>
 <td>Fecha de Apertura de la caja</td>
 </tr>
 <tr>
 <td>fecha_cierre</td>
 <td>string</td>
-<td>11</td>
+<td>10</td>
 <td>Fecha de Cierre de la caja</td>
 </tr>
 <tr>
@@ -125,7 +127,7 @@
 <td>total_cierre</td>
 <td>decimal</td>
 <td>13,5</td>
-<td>Total Cobrado al cierre</td>
+<td>Monto Total al final del cierre</td>
 </tr>
 <tr>
 <td>efectivo</td>
@@ -306,28 +308,52 @@ La caja no es obligatoria para sincronizar documentos pero facilita el filtrado 
 </tr>
 </thead><tbody>
 <tr>
-<td>fecha_emision</td>
-<td>string</td>
-<td>10</td>
-<td>Fecha de emisión de la factura</td>
+<td>id_contifico</td>
+<td>int</td>
+<td>11</td>
+<td>Identificador del producto</td>
 </tr>
 <tr>
-<td>tipo_documento</td>
-<td>string</td>
-<td>3</td>
-<td>Tipo de Documento. FAC: Factura, NVE: Nota de Venta</td>
+<td>unidad_id</td>
+<td>int</td>
+<td>11</td>
+<td>Identificador de la unidad</td>
 </tr>
 <tr>
-<td>documento</td>
-<td>string</td>
-<td>17</td>
-<td>Número de documento. Ej: 001-001-000000123</td>
+<td>cantidad</td>
+<td>decimal</td>
+<td>10,2</td>
+<td>Cantidad de items vendidos</td>
 </tr>
 <tr>
-<td>estado</td>
-<td>string</td>
-<td>1</td>
-<td>Estado de la Factura. P: Pendiente, C: Cobrada, A: Anulada</td>
+<td>precio</td>
+<td>decimal</td>
+<td>13,5</td>
+<td>Precio unitario del item</td>
+</tr>
+<tr>
+<td>porcentaje_iva</td>
+<td>decimal</td>
+<td>10,2</td>
+<td>Porcentaje IVA que se aplica al item: 0 o 12</td>
+</tr>
+<tr>
+<td>base_cero</td>
+<td>decimal</td>
+<td>10,2</td>
+<td>Porcentaje IVA que se aplica al item: 0 o 12</td>
+</tr>
+<tr>
+<td>base_gravable</td>
+<td>decimal</td>
+<td>10,2</td>
+<td>Porcentaje IVA que se aplica al item: 0 o 12</td>
+</tr>
+<tr>
+<td>base_no_gravable</td>
+<td>decimal</td>
+<td>10,2</td>
+<td>Porcentaje IVA que se aplica al item: 0 o 12</td>
 </tr>
 </tbody></table>
 
@@ -342,92 +368,34 @@ La caja no es obligatoria para sincronizar documentos pero facilita el filtrado 
 </tr>
 </thead><tbody>
 <tr>
-<td>fecha_emision</td>
+<td>forma_cobro</td>
 <td>string</td>
-<td>10</td>
-<td>Fecha de emisión de la factura</td>
+<td>2</td>
+<td>Forma de Cobro del documento: EF: Efectivo, TC: Tarjeta de Crédito, CH: Cheque</td>
 </tr>
 <tr>
-<td>tipo_documento</td>
+<td>monto</td>
 <td>string</td>
 <td>3</td>
 <td>Tipo de Documento. FAC: Factura, NVE: Nota de Venta</td>
 </tr>
 <tr>
-<td>documento</td>
-<td>string</td>
-<td>17</td>
+<td>numero_cheque</td>
+<td>Varchar</td>
+<td>15</td>
 <td>Número de documento. Ej: 001-001-000000123</td>
 </tr>
 <tr>
-<td>estado</td>
-<td>string</td>
+<td>tipo_ping</td>
+<td>CHAR</td>
 <td>1</td>
-<td>Estado de la Factura. P: Pendiente, C: Cobrada, A: Anulada</td>
+<td>Tipo de red usada: D: Datafast, M: Medianet, R: Red de Apoyo</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
 Remember a happy kitten is an authenticated kitten!
 </aside>
-
-          <h1 id="errors">Errors</h1>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
-</tr>
-</tbody></table>
 
       </div>
       <div class="dark-box">
